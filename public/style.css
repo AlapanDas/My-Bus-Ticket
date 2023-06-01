@@ -1,0 +1,6 @@
+body{
+     color: rgb(0, 0, 0);
+     background: './moon.jpg';
+     background-size: cover;
+     background-blend-mode: screen;
+}

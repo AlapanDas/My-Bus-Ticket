@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+     <link rel="stylesheet" href="style.css">
+     <head>
+          <title>MBT</title>
+     </head>
+     <body>
+       <h1>My Bus Ticket</h1>
+       <!-- THIS IS WHERE THE DATA IS FETCHED FROM -->
+          <select id="myDropdown">
+               <option value="1">ESPLANADE</option>
+               <option value="2">BABUGHAT</option>
+               <option value="3">SHYAMBAZAR</option>
+               <option value="4">SALT LAKE</option>
+               <option value="5">GARIA</option>
+          </select>
+          <button id="myButton">Fetch</button>
+       <div id="results"></div>
+     </body>
+          <script>
+               var dropdown = document.getElementById("myDropdown");               
+               const button=document.getElementById('myButton');
+               
+              dropdown.addEventListener('change',()=>
+               {
+                    var selectedOption = dropdown.value;
+                    var obj={
+                         input:selectedOption
+                    };
+                    fetch("/bus",{
+                         method:"POST",
+                         headers:{
+                              "content-type":"application/json"
+                         },
+                         body:JSON.stringify(obj)
+                    });
+               });
+     </script>
+</html>     
