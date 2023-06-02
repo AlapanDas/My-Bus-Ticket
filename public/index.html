@@ -1,39 +1,145 @@
 <!DOCTYPE html>
 <html>
-     <link rel="stylesheet" href="style.css">
-     <head>
-          <title>MBT</title>
-     </head>
-     <body>
-       <h1>My Bus Ticket</h1>
-       <!-- THIS IS WHERE THE DATA IS FETCHED FROM -->
-          <select id="myDropdown">
-               <option value="1">ESPLANADE</option>
-               <option value="2">BABUGHAT</option>
-               <option value="3">SHYAMBAZAR</option>
-               <option value="4">SALT LAKE</option>
-               <option value="5">GARIA</option>
-          </select>
-          <button id="myButton">Fetch</button>
-       <div id="results"></div>
-     </body>
-          <script>
-               var dropdown = document.getElementById("myDropdown");               
-               const button=document.getElementById('myButton');
-               
-              dropdown.addEventListener('change',()=>
-               {
-                    var selectedOption = dropdown.value;
-                    var obj={
-                         input:selectedOption
-                    };
-                    fetch("/bus",{
-                         method:"POST",
-                         headers:{
-                              "content-type":"application/json"
-                         },
-                         body:JSON.stringify(obj)
-                    });
+<link rel="stylesheet" href="style.css">
+
+<head>
+     <title>MBT</title>
+</head>
+
+<body>
+     <h1>My Bus Ticket</h1>
+     <!-- THIS IS WHERE THE DATA IS FETCHED FROM -->
+     <select id="myDropdown">
+          <option value="1">ACHIPUR</option>
+          <option value="2">AIRPORT</option>
+          <option value="3">AKRAPHATAK</option>
+          <option value="4">ALAMPUR</option>
+          <option value="5">ALIPUR COURT</option>
+          <option value="6">ALIPUR ZOO</option>
+          <option value="7">AMRATALA</option>
+          <option value="8">AMTALA</option>
+          <option value="9">AQUATICA</option>
+          <option value="10">ARIADAHA</option>
+          <option value="11">B.B.D. BAG</option>
+          <option value="12">BABUGHAT</option>
+          <option value="13">BADURIA</option>
+          <option value="14">BALLYGUNGE STN.</option>
+          <option value="15">BAPULIBAZAR</option>
+          <option value="16">BARANAGAR</option>
+          <option value="17">BARASAT</option>
+          <option value="18">BARRACKPUR COURT</option>
+          <option value="19">BATANAGAR</option>
+          <option value="20">BELGHARIA</option>
+          <option value="21">BELGHARIA STN</option>
+          <option value="22">BELGHORIA STN</option>
+          <option value="23">BHANGARH</option>
+          <option value="24">BHOJERHAT</option>
+          <option value="25">BIRATI</option>
+          <option value="26">BIRLAPUR</option>
+          <option value="27">BONHOOGLY</option>
+          <option value="28">BONOGRAM</option>
+          <option value="29">BUDGE BUDGE STN</option>
+          <option value="30">CANNING</option>
+          <option value="31">CHETLA</option>
+          <option value="32">DAKHINESWAR</option>
+          <option value="33">DAKSHINESWAR</option>
+          <option value="34">DHAKURIA</option>
+          <option value="35">DHARMATALA</option>
+          <option value="36">DIAMOND HARBOUR</option>
+          <option value="37">DTN</option>
+          <option value="38">DUM DUM AIRPORT</option>
+          <option value="39">DUM DUM CANT.</option>
+          <option value="40">DUNLOP BRIDGE</option>
+          <option value="41">ESPLANADE</option>
+          <option value="42">FALTA</option>
+          <option value="43">G.D. BLOCK</option>
+          <option value="44">GARIA</option>
+          <option value="45">GARIA STN</option>
+          <option value="46">GHATAKPUR</option>
+          <option value="47">GHOLA</option>
+          <option value="48">GOLPARK</option>
+          <option value="49">HABRA</option>
+          <option value="50">HARINAVI</option>
+          <option value="51">HAROA</option>
+          <option value="52">HASNABAD</option>
+          <option value="53">HATIARA</option>
+          <option value="54">HILAND WILOW</option>
+          <option value="55">HOWRAH</option>
+          <option value="56">HOWRAH STN.</option>
+          <option value="57">ITINDABAD</option>
+          <option value="58">JADAVPUR</option>
+          <option value="59">KARUNAMOYEE</option>
+          <option value="60">KHADIBARI</option>
+          <option value="61">LAUHATI</option>
+          <option value="62">MADHYAMGRAM</option>
+          <option value="63">MAIDAN</option>
+          <option value="64">MALANCHA</option>
+          <option value="65">MALIPANCHGHORA</option>
+          <option value="66">MATPUKUR</option>
+          <option value="67">METIABRUZ</option>
+          <option value="68">MICHAEL NAGAR</option>
+          <option value="69">NABANNA</option>
+          <option value="70">NAGERBAZAR</option>
+          <option value="71">NAYABAD</option>
+          <option value="72">NEW ALIPUR</option>
+          <option value="73">NEW BARRACKPORE</option>
+          <option value="74">NEWTOWN</option>
+          <option value="75">PAKIPARA BUS STAND</option>
+          <option value="76">PARTHAPUR</option>
+          <option value="77">PURBACHAL</option>
+          <option value="78">RAHARA BAZAR</option>
+          <option value="79">RAJABAZAR</option>
+          <option value="80">RAJARHAT</option>
+          <option value="81">RAMNAGAR</option>
+          <option value="82">ROYPUR</option>
+          <option value="83">SALT LAKE</option>
+          <option value="84">SALT LAKE GT TERMINAL</option>
+          <option value="85">SALT LAKE SEC-II</option>
+          <option value="86">SARSUNA</option>
+          <option value="87">SEALDAH</option>
+          <option value="88">SHYAMBAZAR</option>
+          <option value="89">SINTHEE</option>
+          <option value="90">SREERAMPUR</option>
+          <option value="91">THAKURPUKUR</option>
+          <option value="92">TOLLYGUNGE METRO</option>
+          <option value="93">ULTADANGA</option>
+          <option value="94">VIDYASAGAR SAMITY</option>
+          <option value="95">VIKAS BHAVAN</option>
+     </select>
+     <button id="myButton" onclick="window.location.href='http://localhost:3000/bus'">Fetch</button>
+     <div id="res"></div>
+</body>
+<script>
+     var dropdown = document.getElementById("myDropdown");
+     const button = document.getElementById('myButton');
+
+     dropdown.addEventListener('change', () => {
+          var selectedOption = dropdown.value;
+          var obj = {
+               input: selectedOption
+          };
+          fetch("/bus", {
+               method: "POST",
+               headers: {
+                    "content-type": "application/json"
+               },
+               body: JSON.stringify(obj)
+          }).then((r) => r.json()).then((response) => console.log(response));
+     });
+     $(document).ready(function () {
+          $("#myButton").click(function () {
+               $.ajax({
+                    url: "/bus",
+                    method: "GET",
+                    success: function (response) {
+                         $("#res").text(response);
+                    },
+                    error: function (err) {
+                         console.error("Error:", err);
+                    }
                });
-     </script>
-</html>     
+          });
+     });
+</script>
+
+</html>
