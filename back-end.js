@@ -2,7 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
-const { text } = require('body-parser');
 const app = express();
 
 // DEFINE PORT
