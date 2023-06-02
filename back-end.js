@@ -6,6 +6,7 @@ const { text } = require('body-parser');
 const app = express();
 
 // DEFINE PORT
+const hostname='0.0.0.0';
 const port = 3000;
 
 // Create a MySQL connection pool
@@ -371,6 +372,6 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
+app.listen(port, hostname,() => {
      console.log(`Server listening on port ${port}`);
 });
