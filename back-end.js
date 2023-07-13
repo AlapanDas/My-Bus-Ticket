@@ -2,11 +2,39 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+const { text } = require('body-parser');
 const app = express();
+const { getStorage, ref, listAll } = require("firebase/storage");
+const { initializeApp } =require( "firebase/app");
 
-// DEFINE PORT
-const hostname='0.0.0.0';
+const firebaseConfig = {
+  apiKey: "AIzaSyCDE0MyGG1RXEbQ4DhUDGrX8EhjRwluGTQ",
+  authDomain: "mybusticket-f6a04.firebaseapp.com",
+  projectId: "mybusticket-f6a04",
+  storageBucket: "mybusticket-f6a04.appspot.com",
+  messagingSenderId: "999466434476",
+  appId: "1:999466434476:web:dc0a117864899528f70409",
+  measurementId: "G-EN83E8Y78K"
+};
+const apx = initializeApp(firebaseConfig);
+const storage = getStorage(apx);
+const listRef = ref(storage, 'My Bus .csv');
+console.log
 const port = 3000;
+
+listAll(listRef)
+  .then((res) => {
+    res.prefixes.forEach((folderRef) => {
+      // All the prefixes under listRef.
+      // You may call listAll() recursively on them.
+    });
+    res.items.forEach((itemRef) => {
+      // All the items under listRef.
+      console.log(itemRef.length())
+    });
+  }).catch((error) => {
+    // Uh-oh, an error occurred!
+  });
 
 // Create a MySQL connection pool
 var con = mysql.createConnection({
@@ -371,6 +399,6 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-app.listen(port, hostname,() => {
+app.listen(port, () => {
      console.log(`Server listening on port ${port}`);
 });
