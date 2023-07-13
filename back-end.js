@@ -2,8 +2,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+const { text } = require('body-parser');
 const app = express();
 
+const port = 3000;
 
 // Create a MySQL connection pool
 var con = mysql.createConnection({
@@ -368,4 +370,6 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-app.listen();
+app.listen(port, () => {
+     console.log(`Server listening on port ${port}`);
+});
